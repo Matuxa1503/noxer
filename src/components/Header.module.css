@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background-color: #e4e4e4;
+  color: #666666;
+  font-size: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 1.25rem;
+  font-weight: 400;
+}
+
+.tgLink {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: #fff;
+  padding: 0.2rem 0.5rem 0.2rem 0.3rem;
+  border-radius: 1.25rem;
+  font-size: 0.8rem;
+  color: #292928;
+}
+
+.dropDown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background-color: #e4e4e4;
+  border-radius: 1.25rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.6rem;
+}
