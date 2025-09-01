@@ -9,8 +9,8 @@ export const PopularSearches: FC = () => {
     <div className={s.wrapper}>
       <h2 className={s.subtitle}>Часто ищут</h2>
       <ul>
-        {data.map((item) => (
-          <div className={s.item}>
+        {data.map((item, ind) => (
+          <div key={ind} className={s.item}>
             <img src={searchIcon} alt="search" />
             <li>{item}</li>
           </div>
