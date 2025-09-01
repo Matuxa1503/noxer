@@ -1,5 +1,6 @@
 import './App.css';
 import { Header } from './components/Header/Header';
+import { PopularSearches } from './components/PopularSearches/PopularSearches';
 import { SearchBar } from './components/SearchBar/SearchBar';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <Header />
       <SearchBar />
+      <PopularSearches />
     </>
   );
 }

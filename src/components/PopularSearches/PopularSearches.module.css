@@ -1,0 +1,27 @@
+.wrapper {
+  margin-top: 1rem;
+}
+
+.subtitle {
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.item img {
+  width: 0.8rem;
+}
+
+.item li {
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #b5b5b5;
+}
