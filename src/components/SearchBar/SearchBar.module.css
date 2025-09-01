@@ -1,12 +1,29 @@
-.input {
+.wrapper {
   position: relative;
   z-index: 100;
-  width: 100%;
   margin-top: 1rem;
+}
+
+.input {
+  width: 100%;
   padding: 0.7rem 5rem 0.7rem 2.5rem;
   background-image: url('../../assets/icons/search.png');
   background-repeat: no-repeat;
   border-radius: 1.25rem;
   background-position: 10px center;
   outline: none;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1%;
+  padding: 0.5rem 0.6rem;
+  z-index: 101;
+  color: #fff;
+  font-size: 0.9rem;
+  background-color: #292928;
+  border-radius: 1.25rem;
+  font-size: 0.8rem;
 }
