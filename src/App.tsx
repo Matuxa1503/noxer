@@ -1,5 +1,6 @@
 import './App.css';
 import { FilterProducts } from './components/FilterProducts/FilterProducts';
+import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { MainContent } from './components/MainContent/MainContent';
 import { PopularSearches } from './components/PopularSearches/PopularSearches';
@@ -13,6 +14,7 @@ function App() {
       {/* <PopularSearches /> */}
       {/* <FilterProducts /> */}
       <MainContent />
+      <Footer />
     </>
   );
 }

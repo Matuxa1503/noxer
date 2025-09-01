@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 1.5rem;
+}
+
+.title {
+  color: #8b8b8b;
+  font-size: 0.8rem;
+}
+
+.linkTg {
+  display: inline-flex;
+  margin-top: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  background-color: #e7e7e7;
+  color: #8b8b8b;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 1.25rem;
+}

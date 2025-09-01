@@ -5,9 +5,9 @@ import { CategorySwiper } from './CategorySwiper/CategorySwiper';
 
 export const MainContent: FC = () => {
   return (
-    <div>
+    <main>
       <img className={s.banner} src={swiperBanner} alt="swiper-banner" />
       <CategorySwiper />
-    </div>
+    </main>
   );
 };
