@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import s from './Header.module.css';
 import { ChevronDown, Ellipsis, X } from 'lucide-react';
-import tgIcon from '../assets/icon_tg.png';
+import tgIcon from '../../assets/icon_tg.png';
 
 interface Props {
   className?: string;
