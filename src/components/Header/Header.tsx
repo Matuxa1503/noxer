@@ -1,17 +1,15 @@
 import { FC } from 'react';
 import s from './Header.module.css';
-import { ChevronDown, Ellipsis, X } from 'lucide-react';
 import tgIcon from '../../assets/icon_tg.png';
+import crossIcon from '../../assets/icons/cross.png';
+import arrowBottomIcon from '../../assets/icons/arrow-bottom.png';
+import moreIcon from '../../assets/icons/more.png';
 
-interface Props {
-  className?: string;
-}
-
-export const Header: FC<Props> = () => {
+export const Header: FC = () => {
   return (
     <header className={s.header}>
       <button className={s.closeBtn}>
-        <X size={15} strokeWidth={2.5} color="#666666" />
+        <img src={crossIcon} alt="cross" />
         Закрыть
       </button>
 
@@ -21,8 +19,8 @@ export const Header: FC<Props> = () => {
       </a>
 
       <div className={s.dropDown}>
-        <ChevronDown color="#666666" />
-        <Ellipsis size={16} color="#666666" />
+        <img src={arrowBottomIcon} alt="arrow-bottom" />
+        <img src={moreIcon} alt="more" />
       </div>
     </header>
   );
