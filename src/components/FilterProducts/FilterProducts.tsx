@@ -37,9 +37,7 @@ export const FilterProducts: FC<Props> = ({ query }) => {
 
   return (
     <div className={s.listProducts}>
-      {products.map((item) => (
-        <SearchProductCard key={item.Product_ID} item={item} />
-      ))}
+      {products && products.length > 0 && products.map((item) => <SearchProductCard key={item.Product_ID} item={item} />)}
     </div>
   );
 };
