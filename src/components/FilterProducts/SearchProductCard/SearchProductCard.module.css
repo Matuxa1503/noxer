@@ -1,0 +1,55 @@
+/* class for FilterProducts.tsx */
+.listProducts {
+  margin-top: -1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 0 1rem;
+  height: 7rem;
+  gap: 2rem;
+  cursor: pointer;
+}
+
+.card:first-child {
+  padding-top: 0.5rem;
+}
+
+.card img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currentPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.oldPrice {
+  font-size: 0.8rem;
+  color: #bfbfbf;
+  text-decoration: line-through;
+}
+
+.discount {
+  color: #f24131;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

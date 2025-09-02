@@ -1,0 +1,10 @@
+.swiper {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.35rem;
+  margin: 1rem 0;
+}
+
+.swiper::-webkit-scrollbar {
+  display: none;
+}
