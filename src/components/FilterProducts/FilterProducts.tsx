@@ -32,8 +32,8 @@ export const FilterProducts: FC<Props> = ({ query }) => {
     fetchProducts();
   }, [query]);
 
-  if (loading) return <p>Загрузка...</p>;
-  if (!products.length) return <p>Нет совпадений</p>;
+  if (loading) return <p className={s.loader}>Загрузка...</p>;
+  if (!products.length) return <p className={s.loader}>Нет совпадений</p>;
 
   return (
     <div className={s.listProducts}>

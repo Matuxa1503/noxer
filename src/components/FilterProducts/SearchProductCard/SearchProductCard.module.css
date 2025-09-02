@@ -6,6 +6,10 @@
   gap: 1rem;
 }
 
+.loader {
+  margin-top: 1rem;
+}
+
 .card {
   display: flex;
   align-items: center;

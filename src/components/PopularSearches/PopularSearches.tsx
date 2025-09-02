@@ -8,9 +8,11 @@ interface Props {
 
 export const PopularSearches: FC<Props> = ({ setSearchValue }) => {
   const [categories, setCategories] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await fetch('https://noxer-test.ru/webapp/api/products?on_main=true');
         if (response.ok) {
@@ -19,6 +21,8 @@ export const PopularSearches: FC<Props> = ({ setSearchValue }) => {
         }
       } catch (err) {
         console.error('Ошибка запроса:', err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -28,7 +32,8 @@ export const PopularSearches: FC<Props> = ({ setSearchValue }) => {
     <div className={s.wrapper}>
       <h2 className={s.subtitle}>Часто ищут</h2>
       <ul>
-        {categories &&
+        {loading && <p>Загрузка популярных категорий...</p>}
+        {!loading &&
           categories.length > 0 &&
           categories.map((item, ind) => (
             <div onClick={() => setSearchValue(item)} key={ind} className={s.item}>
@@ -36,6 +41,7 @@ export const PopularSearches: FC<Props> = ({ setSearchValue }) => {
               <li>{item}</li>
             </div>
           ))}
+        {!loading && categories.length === 0 && <p>Популярные категории не найдены</p>}
       </ul>
     </div>
   );
