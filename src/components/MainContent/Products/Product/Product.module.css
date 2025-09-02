@@ -1,0 +1,105 @@
+/* class for Products component */
+.productsList {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 425px) {
+  .productsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* class for ProductTag component */
+.productTag {
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0.2rem;
+  background-color: #fff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+}
+
+.imgBlock {
+  position: relative;
+}
+
+.productImg {
+  width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+}
+
+.additionalBlock {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 5%;
+  left: 0;
+  z-index: 10;
+  padding: 0 0.4rem;
+}
+
+.infoBlock {
+  margin: 0.3rem 0;
+  padding: 0 0.2rem;
+}
+
+.title {
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.priceBlock {
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.currentPrice {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.oldPrice {
+  font-size: 0.8rem;
+  color: #bfbfbf;
+  text-decoration: line-through;
+}
+
+.discount {
+  color: #f24131;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.btn {
+  background-color: #f1f1f1;
+  color: #292928;
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  width: 100%;
+  padding: 0.625rem 4rem;
+}
