@@ -1,18 +1,20 @@
 import { FC } from 'react';
 import s from './SearchProductCard.module.css';
-import productPhoto from '../../../assets/image.png';
+import { convertPrice } from '../../../utils/convertPrice';
 
-export const SearchProductCard: FC = () => {
+export const SearchProductCard: FC = ({ item }) => {
+  const price = convertPrice(item.parameters[0].price, item.parameters[0].old_price);
+
   return (
     <div className={s.card}>
-      <img src={productPhoto} alt="" />
+      {item.images[0] ? <img src={item.images[0].Image_URL} alt="" /> : ''}
 
       <div className={s.rightBlock}>
-        <p className={s.title}>Футболка мужская Комары</p>
+        <p className={s.title}>{item.Product_Name}</p>
         <div className={s.priceBlock}>
-          <p className={s.currentPrice}>2 800 ₽</p>
-          <p className={s.oldPrice}>3 500 ₽</p>
-          <p className={s.discount}>-20%</p>
+          {price.current && <p className={s.currentPrice}>{price.current}₽</p>}
+          {price.old && <p className={s.oldPrice}>{price.old}₽</p>}
+          <p className={s.discount}>{price.discount()}</p>
         </div>
       </div>
     </div>

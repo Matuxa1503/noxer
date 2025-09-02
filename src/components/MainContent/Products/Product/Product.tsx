@@ -3,7 +3,8 @@ import s from './Product.module.css';
 import LikeIcon from '../../../../assets/icons/Vector.png';
 import selectLikeIcon from '../../../../assets/icons/Vector1.png';
 import { PRODUCT_TAGS } from '../../../../constants';
-import { ProductTag } from './ProductTag/ProductTag';
+import { convertPrice } from '../../../../utils/convertPrice';
+import { ProductTag } from '../ProductTag/ProductTag';
 
 interface Props {
   item: any;
@@ -12,15 +13,7 @@ interface Props {
 export const Product: FC<Props> = ({ item }) => {
   const [selectLike, setSelectLike] = useState(false);
   const mainImg = item.images.find((img) => img.MainImage === true);
-  const price = {
-    current: item.parameters[0].price,
-    old: item.parameters[0].old_price,
-    discount() {
-      if (!this.old || this.old <= 0) return '';
-      const discount = ((this.old - this.current) / this.old) * 100;
-      return '-' + Math.round(discount) + '%';
-    },
-  };
+  const price = convertPrice(item.parameters[0].price, item.parameters[0].old_price);
 
   return (
     <div className={s.productCard}>

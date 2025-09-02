@@ -1,6 +1,6 @@
 // ProductTag.tsx
 import { FC } from 'react';
-import s from '../Product.module.css';
+import s from '../Product/Product.module.css';
 
 interface Props {
   label: string;
