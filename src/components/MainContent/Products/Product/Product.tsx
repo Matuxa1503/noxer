@@ -5,7 +5,11 @@ import selectLikeIcon from '../../../../assets/icons/Vector1.png';
 import { PRODUCT_TAGS } from '../../../../constants';
 import { ProductTag } from './ProductTag/ProductTag';
 
-export const Product: FC = ({ item }) => {
+interface Props {
+  item: any;
+}
+
+export const Product: FC<Props> = ({ item }) => {
   const [selectLike, setSelectLike] = useState(false);
   const mainImg = item.images.find((img) => img.MainImage === true);
   const price = {

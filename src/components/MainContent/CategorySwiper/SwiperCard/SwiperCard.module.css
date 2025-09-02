@@ -1,6 +1,6 @@
 .swiperCard {
   cursor: pointer;
-  width: clamp(4.1rem, 18vw, 7.2rem);
+  width: clamp(4.1rem, 17.5vw, 7.2rem);
   flex: 0 0 auto;
   text-align: center;
 }
@@ -23,4 +23,15 @@
   color: #292928;
   margin-top: 0.4rem;
   line-height: 1.2;
+}
+
+@media (max-width: 450px) {
+  .swiperCard {
+    width: clamp(4.1rem, 17.3vw, 7.2rem);
+  }
+}
+@media (max-width: 380px) {
+  .swiperCard {
+    width: clamp(4.1rem, 17.1vw, 7.2rem);
+  }
 }

@@ -3,7 +3,7 @@ import s from './Product/Product.module.css';
 import { Product } from './Product/Product';
 
 export const Products: FC = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
