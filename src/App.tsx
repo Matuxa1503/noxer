@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { FilterProducts } from './components/FilterProducts/FilterProducts';
 import { Footer } from './components/Footer/Footer';
@@ -9,16 +9,26 @@ import { SearchBar } from './components/SearchBar/SearchBar';
 import { AppDataProvider } from './AppDataContext';
 
 function App() {
-  const [focused, setFocused] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [focused, setFocused] = useState(false);
+
+  const handleBackClick = () => {
+    setSearchValue('');
+    setFocused(false);
+  };
 
   return (
     <AppDataProvider>
-      <Header />
-      <SearchBar setFocused={setFocused} searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Header focused={focused} onBackClick={handleBackClick} />
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} setFocused={setFocused} />
 
-      {focused && !searchValue && <PopularSearches />}
+      {/* Если фокус и пустой инпут — показываем популярные запросы */}
+      {focused && !searchValue && <PopularSearches setSearchValue={setSearchValue} />}
+
+      {/* Если есть текст — показываем фильтрованные товары */}
       {searchValue && <FilterProducts query={searchValue} />}
+
+      {/* Если нет фокуса и пустой инпут — показываем главную */}
       {!focused && !searchValue && <MainContent searchValue={searchValue} focused={focused} />}
 
       <Footer />

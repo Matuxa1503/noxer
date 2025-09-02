@@ -14,7 +14,6 @@ export const SearchBar: FC<Props> = ({ searchValue, setSearchValue, setFocused }
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
         type="text"
         className={s.input}
         placeholder="Найти товары"

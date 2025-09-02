@@ -3,7 +3,11 @@ import s from './PopularSearches.module.css';
 import searchIcon from '../../assets/icons/search.png';
 import { AppDataContext } from '../../AppDataContext';
 
-export const PopularSearches: FC = () => {
+interface Props {
+  setSearchValue: (any) => void;
+}
+
+export const PopularSearches: FC<Props> = ({ setSearchValue }) => {
   const { data } = useContext(AppDataContext);
   const categories = data.special_project_parameters_json.fast_search_strings.parameters_list;
 
@@ -14,7 +18,7 @@ export const PopularSearches: FC = () => {
         {categories &&
           categories.length > 0 &&
           categories.map((item, ind) => (
-            <div key={ind} className={s.item}>
+            <div onClick={() => setSearchValue(item)} key={ind} className={s.item}>
               <img src={searchIcon} alt="search" />
               <li>{item}</li>
             </div>
