@@ -5,6 +5,7 @@ import selectLikeIcon from '../../../../assets/icons/Vector1.png';
 import { PRODUCT_TAGS } from '../../../../constants';
 import { convertPrice } from '../../../../utils/convertPrice';
 import { ProductTag } from '../ProductTag/ProductTag';
+import plug from '../../../../assets/plug.png';
 
 interface Props {
   item: any;
@@ -12,14 +13,14 @@ interface Props {
 
 export const Product: FC<Props> = ({ item }) => {
   const [selectLike, setSelectLike] = useState(false);
-  const mainImg = item.images.find((img) => img.MainImage === true);
+  const mainImg = item.images[0] ? item.images[0].Image_URL : plug;
   const price = convertPrice(item.parameters[0].price, item.parameters[0].old_price);
 
   return (
     <div className={s.productCard}>
       <div className={s.content}>
         <div className={s.imgBlock}>
-          <img className={s.productImg} src={mainImg.Image_URL} alt="" />
+          <img className={s.productImg} src={mainImg} alt="" />
 
           <div className={s.additionalBlock}>
             <div className={s.marks}>

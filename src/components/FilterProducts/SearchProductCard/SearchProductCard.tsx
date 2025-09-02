@@ -1,13 +1,15 @@
 import { FC } from 'react';
 import s from './SearchProductCard.module.css';
 import { convertPrice } from '../../../utils/convertPrice';
+import plug from '../../../assets/plug.png';
 
 export const SearchProductCard: FC = ({ item }) => {
   const price = convertPrice(item.parameters[0].price, item.parameters[0].old_price);
+  const mainImg = item.images[0] ? item.images[0].Image_URL : plug;
 
   return (
     <div className={s.card}>
-      {item.images[0] ? <img src={item.images[0].Image_URL} alt="" /> : ''}
+      <img src={mainImg} alt="" />
 
       <div className={s.rightBlock}>
         <p className={s.title}>{item.Product_Name}</p>
