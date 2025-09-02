@@ -3,7 +3,11 @@ import s from './SearchProductCard.module.css';
 import { convertPrice } from '../../../utils/convertPrice';
 import plug from '../../../assets/plug.png';
 
-export const SearchProductCard: FC = ({ item }) => {
+interface Props {
+  item: any;
+}
+
+export const SearchProductCard: FC<Props> = ({ item }) => {
   const price = convertPrice(item.parameters[0].price, item.parameters[0].old_price);
   const mainImg = item.images[0] ? item.images[0].Image_URL : plug;
 

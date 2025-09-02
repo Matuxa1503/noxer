@@ -1,13 +1,13 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import s from './PopularSearches.module.css';
 import searchIcon from '../../assets/icons/search.png';
 
 interface Props {
-  setSearchValue: (any) => void;
+  setSearchValue: (value: string) => void;
 }
 
 export const PopularSearches: FC<Props> = ({ setSearchValue }) => {
-  const [categories, setCategories] = useState('');
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

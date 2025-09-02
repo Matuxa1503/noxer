@@ -6,7 +6,7 @@ import { PRODUCT_TAGS } from '../../../../constants';
 import { convertPrice } from '../../../../utils/convertPrice';
 import { ProductTag } from '../ProductTag/ProductTag';
 import plug from '../../../../assets/plug.png';
-
+import { IMark } from '../../../../interfaces';
 interface Props {
   item: any;
 }
@@ -24,7 +24,7 @@ export const Product: FC<Props> = ({ item }) => {
 
           <div className={s.additionalBlock}>
             <div className={s.marks}>
-              {item.marks.map((mark) => {
+              {item.marks.map((mark: IMark) => {
                 const tagName = mark.Mark_Name.toLowerCase() as keyof typeof PRODUCT_TAGS;
                 const tag = PRODUCT_TAGS[tagName];
                 if (!tag) return null;
