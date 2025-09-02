@@ -1,20 +1,24 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import s from './PopularSearches.module.css';
 import searchIcon from '../../assets/icons/search.png';
+import { AppDataContext } from '../../AppDataContext';
 
 export const PopularSearches: FC = () => {
-  const data = ['футболка', 'женская кофта', 'куртка', 'сертификат на 1000 рублей', 'детская футболка', 'шапка'];
+  const { data } = useContext(AppDataContext);
+  const categories = data.special_project_parameters_json.fast_search_strings.parameters_list;
 
   return (
     <div className={s.wrapper}>
       <h2 className={s.subtitle}>Часто ищут</h2>
       <ul>
-        {data.map((item, ind) => (
-          <div key={ind} className={s.item}>
-            <img src={searchIcon} alt="search" />
-            <li>{item}</li>
-          </div>
-        ))}
+        {categories &&
+          categories.length > 0 &&
+          categories.map((item, ind) => (
+            <div key={ind} className={s.item}>
+              <img src={searchIcon} alt="search" />
+              <li>{item}</li>
+            </div>
+          ))}
       </ul>
     </div>
   );
