@@ -16,8 +16,8 @@ export const Products: FC = () => {
       setLoading(true);
       const data = await fetchDataPagination(page);
 
-      const filteredProducts = data.products.filter((product) =>
-        product.categories.some((category) => filterCategoryIds.includes(category.Category_ID))
+      const filteredProducts = data.products.filter((product: any) =>
+        product.categories.some((category: any) => filterCategoryIds.includes(category.Category_ID))
       );
       console.log('on_main=false&per_page', filteredProducts);
 

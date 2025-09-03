@@ -13,7 +13,7 @@ export const CategorySwiper: FC = () => {
       setLoading(true);
       const data = await fetchDataOnMain();
 
-      const filteredCategories = data.categories.filter((category) => filterCategoryIds.includes(category.Category_ID));
+      const filteredCategories = data.categories.filter((category: any) => filterCategoryIds.includes(category.Category_ID));
       console.log(filteredCategories);
       setCategories(filteredCategories);
       setLoading(false);
