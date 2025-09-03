@@ -2,6 +2,7 @@ import { FC, useEffect, useState, useRef } from 'react';
 import s from './Product/Product.module.css';
 import { Product } from './Product/Product';
 import { fetchDataPagination } from '../../../api';
+import { filterCategoryIds } from '../../../constants';
 
 export const Products: FC = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -9,7 +10,6 @@ export const Products: FC = () => {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const filterCategoryIds = [2, 3, 31, 83]; // category id clothes
 
   useEffect(() => {
     const fetchProducts = async () => {

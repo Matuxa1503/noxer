@@ -6,3 +6,5 @@ export const PRODUCT_TAGS = {
   discount: { label: 'discount', color: '#d72800ff' },
   hot: { label: 'hot', color: '#d72800ff' },
 };
+
+export const filterCategoryIds = [2, 3, 31, 83]; // category id clothes
