@@ -1,34 +1,30 @@
 import { FC, useEffect, useState, useRef } from 'react';
 import s from './Product/Product.module.css';
 import { Product } from './Product/Product';
+import { fetchDataPagination } from '../../../api';
 
 export const Products: FC = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-  const perPage = 11;
   const loaderRef = useRef<HTMLDivElement | null>(null);
+  const filterCategoryIds = [2, 3, 31, 83]; // category id clothes
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      try {
-        const res = await fetch(`https://noxer-test.ru/webapp/api/products?on_main=false&per_page=${perPage}&page=${page}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (page === 1) {
-            setProducts(data.products);
-          } else {
-            setProducts((prev) => [...prev, ...data.products]);
-          }
-          setHasMore(data.products.length === perPage);
-        }
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+      const data = await fetchDataPagination(page);
+
+      const filteredProducts = data.products.filter((product) =>
+        product.categories.some((category) => filterCategoryIds.includes(category.Category_ID))
+      );
+      console.log('on_main=false&per_page', filteredProducts);
+
+      setProducts((prev) => (page === 1 ? filteredProducts : [...prev, ...filteredProducts]));
+      setHasMore(data.pagination.has_next);
+
+      setLoading(false);
     };
 
     fetchProducts();
@@ -62,6 +58,7 @@ export const Products: FC = () => {
       {products.map((item, id) => (
         <Product key={id} item={item} />
       ))}
+
       <div ref={loaderRef} style={{ height: 1 }} />
       {loading && <p>Загрузка...</p>}
     </div>

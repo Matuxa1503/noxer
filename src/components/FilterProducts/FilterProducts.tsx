@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { SearchProductCard } from './SearchProductCard/SearchProductCard';
 import s from './SearchProductCard/SearchProductCard.module.css';
+import { fetchDataOnAnother } from '../../api';
 
 interface Props {
   query: string;
@@ -15,18 +16,12 @@ export const FilterProducts: FC<Props> = ({ query }) => {
 
     const fetchProducts = async () => {
       setLoading(true);
+      const data = await fetchDataOnAnother();
 
-      try {
-        const res = await fetch(`https://noxer-test.ru/webapp/api/products?on_main=false`);
-        const data = await res.json();
+      const filtered = data.products.filter((p: any) => p.Product_Name.toLowerCase().includes(query.toLowerCase()));
+      setProducts(filtered);
 
-        const filtered = data.products.filter((p: any) => p.Product_Name.toLowerCase().includes(query.toLowerCase()));
-        setProducts(filtered);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+      setLoading(false);
     };
 
     fetchProducts();
@@ -36,8 +31,8 @@ export const FilterProducts: FC<Props> = ({ query }) => {
   if (!products.length) return <p className={s.loader}>Нет совпадений</p>;
 
   return (
-    <div className={s.listProducts}>
+    <section className={s.listProducts}>
       {products && products.length > 0 && products.map((item) => <SearchProductCard key={item.Product_ID} item={item} />)}
-    </div>
+    </section>
   );
 };
