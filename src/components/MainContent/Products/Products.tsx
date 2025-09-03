@@ -19,7 +19,6 @@ export const Products: FC = () => {
       const filteredProducts = data.products.filter((product: any) =>
         product.categories.some((category: any) => filterCategoryIds.includes(category.Category_ID))
       );
-      console.log('on_main=false&per_page', filteredProducts);
 
       setProducts((prev) => (page === 1 ? filteredProducts : [...prev, ...filteredProducts]));
       setHasMore(data.pagination.has_next);

@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { SearchProductCard } from './SearchProductCard/SearchProductCard';
 import s from './SearchProductCard/SearchProductCard.module.css';
 import { fetchDataOnAnother } from '../../api';
+import { filterCategoryIds } from '../../constants';
 
 interface Props {
   query: string;
@@ -12,19 +13,25 @@ export const FilterProducts: FC<Props> = ({ query }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!query) return;
+    const handler = setTimeout(() => {
+      const fetchProducts = async () => {
+        setLoading(true);
+        const data = await fetchDataOnAnother();
 
-    const fetchProducts = async () => {
-      setLoading(true);
-      const data = await fetchDataOnAnother();
+        const filteredSearchProducts = data.products.filter((product: any) =>
+          product.categories.some((category: any) => filterCategoryIds.includes(category.Category_ID))
+        );
+        const filtered = filteredSearchProducts.filter((p: any) => p.Product_Name.toLowerCase().includes(query.toLowerCase()));
+        setProducts(filtered);
+        setLoading(false);
+      };
 
-      const filtered = data.products.filter((p: any) => p.Product_Name.toLowerCase().includes(query.toLowerCase()));
-      setProducts(filtered);
+      fetchProducts();
+    }, 500);
 
-      setLoading(false);
+    return () => {
+      clearTimeout(handler);
     };
-
-    fetchProducts();
   }, [query]);
 
   if (loading) return <p className={s.loader}>Загрузка...</p>;
