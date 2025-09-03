@@ -1,4 +1,4 @@
-/* class for Products component */
+/* class for Products.tsx component */
 .productsList {
   position: relative;
   display: grid;
@@ -6,13 +6,7 @@
   gap: 0.5rem;
 }
 
-@media (max-width: 425px) {
-  .productsList {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* class for ProductTag component */
+/* class for ProductTag.tsx component */
 .productTag {
   padding: 0.2rem 0.5rem;
   border-radius: 1rem;
@@ -21,7 +15,9 @@
   font-weight: 700;
 }
 
+/* root styles */
 .productCard {
+  height: auto;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -38,12 +34,15 @@
 
 .imgBlock {
   position: relative;
+  width: 100%;
+  height: 11.9rem;
 }
 
 .productImg {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 1.25rem;
+  object-fit: cover;
 }
 
 .additionalBlock {
@@ -55,6 +54,13 @@
   left: 0;
   z-index: 10;
   padding: 0 0.4rem;
+}
+
+.marks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: flex-start;
 }
 
 .infoBlock {
@@ -102,4 +108,14 @@
   border-radius: 1rem;
   width: 100%;
   padding: 0.625rem 4rem;
+}
+
+@media (max-width: 426px) {
+  .productsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .imgBlock {
+    height: 17.9rem;
+  }
 }

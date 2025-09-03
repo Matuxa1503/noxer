@@ -13,7 +13,7 @@ export const SearchProductCard: FC<Props> = ({ item }) => {
 
   return (
     <div className={s.card}>
-      <img src={mainImg} alt="" />
+      <img src={mainImg} alt="product-card-img" />
 
       <div className={s.rightBlock}>
         <p className={s.title}>{item.Product_Name}</p>
