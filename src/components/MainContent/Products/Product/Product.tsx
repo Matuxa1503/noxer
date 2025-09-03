@@ -20,7 +20,7 @@ export const Product: FC<Props> = ({ item }) => {
     <div className={s.productCard}>
       <div className={s.content}>
         <div className={s.imgBlock}>
-          <img className={s.productImg} src={mainImg} alt="" />
+          <img className={s.productImg} src={mainImg} alt="product-img" />
 
           <div className={s.additionalBlock}>
             <div className={s.marks}>
@@ -31,7 +31,6 @@ export const Product: FC<Props> = ({ item }) => {
                 return <ProductTag key={mark.Mark_ID} label={tag.label} color={tag.color} />;
               })}
             </div>
-
             <div onClick={() => setSelectLike((prev) => !prev)}>
               {selectLike ? <img src={selectLikeIcon} alt="" /> : <img src={LikeIcon} alt="" />}
             </div>
@@ -44,7 +43,6 @@ export const Product: FC<Props> = ({ item }) => {
             {price.old && <p className={s.oldPrice}>{price.old}₽</p>}
             <p className={s.discount}>{price.discount()}</p>
           </div>
-
           <p className={s.title}>{item.Product_Name}</p>
         </div>
       </div>

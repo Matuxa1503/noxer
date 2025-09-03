@@ -3,4 +3,8 @@ export const PRODUCT_TAGS = {
   hit: { label: 'hit', color: '#FF6723' },
   premium: { label: 'premium', color: '#292928' },
   new: { label: 'new', color: '#45B649' },
+  discount: { label: 'discount', color: '#d72800ff' },
+  hot: { label: 'hot', color: '#d72800ff' },
 };
+
+export const filterCategoryIds = [2, 3, 31, 83]; // category id clothes

@@ -11,10 +11,10 @@ interface Props {
 
 export const MainContent: FC<Props> = ({ focused, searchValue }) => {
   return (
-    <main style={{ display: focused || searchValue ? 'none' : 'block' }}>
+    <section style={{ display: focused || searchValue ? 'none' : 'block' }}>
       <img className={s.banner} src={swiperBanner} alt="swiper-banner" />
       <CategorySwiper />
       <Products />
-    </main>
+    </section>
   );
 };

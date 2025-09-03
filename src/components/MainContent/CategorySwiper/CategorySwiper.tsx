@@ -1,58 +1,31 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import s from './CategorySwiper.module.css';
 import { SwiperCard } from './SwiperCard/SwiperCard';
+import { fetchDataOnMain } from '../../../api';
+import { filterCategoryIds } from '../../../constants';
 
 export const CategorySwiper: FC = () => {
-  const data = [
-    {
-      Category_ID: 1,
-      Category_Image: 'https://static-sda.ru/brandbot/menu/card1.png',
-      Category_Name: 'Техника',
-      sort_order: 1,
-    },
-    {
-      Category_ID: 54,
-      Category_Image: 'https://snipp.ru/uploads/images/donut.png',
-      Category_Name: 'ТЕстовая категорий',
-      sort_order: 2,
-    },
-    {
-      Category_ID: 55,
-      Category_Image: '',
-      Category_Name: 'Упаковка расходники',
-      sort_order: 3,
-    },
-    {
-      Category_ID: 56,
-      Category_Image: '',
-      Category_Name: 'срезка',
-      sort_order: 4,
-    },
-    {
-      Category_ID: 57,
-      Category_Image: '',
-      Category_Name: 'вазы',
-      sort_order: 5,
-    },
-    {
-      Category_ID: 58,
-      Category_Image: '',
-      Category_Name: 'пакеты',
-      sort_order: 6,
-    },
-    {
-      Category_ID: 5,
-      Category_Image: 'https://static-sda.ru/brandbot/menu/card5.png',
-      Category_Name: 'Наушники',
-      sort_order: 23,
-    },
-  ];
+  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      const data = await fetchDataOnMain();
+
+      const filteredCategories = data.categories.filter((category: any) => filterCategoryIds.includes(category.Category_ID));
+      console.log(filteredCategories);
+      setCategories(filteredCategories);
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div className={s.swiper}>
-      {data.map((item) => (
-        <SwiperCard key={item.Category_ID} item={item} />
-      ))}
+      {loading && <p>Загрузка...</p>}
+      {!loading && categories.map((item) => <SwiperCard key={item.Category_ID} item={item} />)}
     </div>
   );
 };

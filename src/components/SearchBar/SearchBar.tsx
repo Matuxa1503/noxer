@@ -9,7 +9,7 @@ interface Props {
 
 export const SearchBar: FC<Props> = ({ searchValue, setSearchValue, setFocused }) => {
   return (
-    <div className={s.wrapper}>
+    <section className={s.wrapper}>
       <input
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
@@ -19,6 +19,6 @@ export const SearchBar: FC<Props> = ({ searchValue, setSearchValue, setFocused }
         placeholder="Найти товары"
       />
       {searchValue && <button className={s.btn}>Перейти</button>}
-    </div>
+    </section>
   );
 };

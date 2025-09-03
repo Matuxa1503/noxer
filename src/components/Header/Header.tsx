@@ -7,15 +7,15 @@ import arrowLeftIcon from '../../assets/icons/arrow-left.png';
 import moreIcon from '../../assets/icons/more.png';
 
 interface Props {
-  onBackClick?: () => void;
+  onResetInput?: () => void;
   focused: boolean;
 }
 
-export const Header: FC<Props> = ({ onBackClick, focused }) => {
+export const Header: FC<Props> = ({ onResetInput, focused }) => {
   return (
     <header className={s.header}>
       {focused ? (
-        <button className={s.closeBtn} onClick={onBackClick}>
+        <button className={s.closeBtn} onClick={onResetInput}>
           <img src={arrowLeftIcon} alt="arrow-left-icon" />
           Назад
         </button>
